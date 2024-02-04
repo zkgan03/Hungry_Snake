@@ -113,11 +113,20 @@
 	left: 0;
 	top: 0;
 }
+.modal .desc .state {
+	font-weight: bold;
+}
 
 .result {
 	text-align: center;
-	font-size: 36px;
+	font-size: 20px;
 }
 .result .score {
+	font-size: 36px;
 	color: rgb(185, 157, 0);
+	font-weight: bold;
+}
+
+.result .score.lost {
+	color: red;
 }

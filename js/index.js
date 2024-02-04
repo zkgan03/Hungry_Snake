@@ -221,6 +221,9 @@
 
 		if (isGameOver) {
 			modalDom.style.display = "block";
+			scoreDom.innerText = "You Dead!";
+			scoreDom.classList.add("lost");
+			modalDom.querySelector(".desc .state").innerText = "Restart";
 		}
 
 		return isGameOver;
@@ -278,8 +281,11 @@
 		document.addEventListener(
 			"click",
 			() => {
+				if (!gameInterval) return;
+
 				clearInterval(gameInterval);
 				modalDom.style.display = "block";
+				modalDom.querySelector(".desc .state").innerText = "Continue";
 			},
 			true //capture phase only
 		);
@@ -301,6 +307,7 @@
 	function clearData() {
 		// clear score
 		score = 0;
+		scoreDom.classList.remove("lost");
 		scoreDom.innerText = score;
 
 		//clear snake data
