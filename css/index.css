@@ -1,0 +1,123 @@
+.main {
+	margin: 10px auto;
+	width: fit-content;
+	border: 1vw solid #5c8a2e;
+	position: relative;
+}
+
+.main .row {
+	display: flex;
+	width: fit-content;
+}
+
+.main .row .column {
+	width: 1.2vw;
+	height: 1.2vw;
+}
+
+/* 2n + 1 row */
+.main .row:nth-child(2n + 1) .column:nth-child(2n) {
+	background-color: #a6d13d;
+	/* background-color: black; */
+}
+
+.main .row:nth-child(2n + 1) .column:nth-child(2n + 1) {
+	background-color: #aed746;
+	/* background-color: aqua; */
+}
+
+/* 2n row */
+.main .row:nth-child(2n) .column:nth-child(2n) {
+	background-color: #aed746;
+}
+
+.main .row:nth-child(2n) .column:nth-child(2n + 1) {
+	background-color: #a6d13d;
+}
+
+.snake-head-up::after {
+	content: "";
+	background-image: url(../img/snake-head.svg);
+	transform: rotate(180deg);
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.snake-head-down::after {
+	content: "";
+	background-image: url(../img/snake-head.svg);
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.snake-head-right::after {
+	content: "";
+	background-image: url(../img/snake-head.svg);
+	transform: rotate(270deg);
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.snake-head-left::after {
+	content: "";
+	background-image: url(../img/snake-head.svg);
+	transform: rotate(90deg);
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.snake-body::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	border-radius: 40%;
+	background-color: rgba(43, 145, 74, 0.5);
+	background-position: center;
+}
+
+.apple::after {
+	content: "";
+	background-image: url(../img/apple.png);
+	background-position: center;
+	background-size: cover;
+	display: block;
+	width: 100%;
+	height: 100%;
+	animation: scaling 0.5s cubic-bezier(0.1, 0.85, 1, 1) infinite alternate;
+}
+
+@keyframes scaling {
+	0% {
+		transform: scale(0.85);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+.modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	font-size: 30px;
+	z-index: 1;
+	text-align: center;
+	left: 0;
+	top: 0;
+}
+
+.result {
+	text-align: center;
+	font-size: 36px;
+}
+.result .score {
+	color: rgb(185, 157, 0);
+}
