@@ -224,6 +224,8 @@
 			scoreDom.innerText = "You Dead!";
 			scoreDom.classList.add("lost");
 			modalDom.querySelector(".desc .state").innerText = "Restart";
+
+			clearInterval(gameInterval);
 		}
 
 		return isGameOver;
