@@ -277,33 +277,36 @@
 					break;
 			}
 		}
-
 		document.addEventListener("keydown", handleUserKeyPress);
 
-		document.addEventListener(
-			"click",
-			() => {
-				if (!gameInterval) return;
+		//pause game if clicked out of the game area
+		function handleMouseClick(e) {
+			if (e.target === modalDom) {
+				console.log(e.target, "clicked modal");
 
+				if (isGameOver) {
+					clearData();
+					initView();
+					initData();
+				}
+
+				gameInterval = setInterval(moveSnake, speed);
+				modalDom.style.display = "none";
+			} else {
+				if (
+					!gameInterval ||
+					mainDom.contains(e.target) ||
+					isGameOver === true
+				)
+					return;
+
+				console.log(e.target, "clicked document");
 				clearInterval(gameInterval);
 				modalDom.style.display = "block";
 				modalDom.querySelector(".desc .state").innerText = "Continue";
-			},
-			true //capture phase only
-		);
-
-		function handleContinueGame() {
-			if (isGameOver) {
-				clearInterval(gameInterval);
-				clearData();
-				initView();
-				initData();
 			}
-
-			gameInterval = setInterval(moveSnake, speed);
-			modalDom.style.display = "none";
 		}
-		mainDom.addEventListener("click", handleContinueGame);
+		document.addEventListener("click", handleMouseClick);
 	}
 
 	function clearData() {
